@@ -1,0 +1,34 @@
+{
+  "name": "debuggyfy",
+  "version": "0.1.0",
+  "description": "Adds debugging possibilities to the buggy toolchain by adding listener nodes that interact with the gui between graph nodes",
+  "main": "lib/debuggyfy.js",
+  "scripts": {
+    "test": "node node_modules/standard/bin/cmd.js src/**/*.js && node_modules/mocha/bin/mocha --compilers js:babel-register",
+    "build": "babel src -d lib",
+    "prepublish": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.gdv.uni-hannover.de:buggy/debuggyfy.git"
+  },
+  "keywords": [
+    "debugger",
+    "buggy"
+  ],
+  "author": "Georg Schuppe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BuggyOrg/debuggyfy/issues"
+  },
+  "homepage": "https://github.com/BuggyOrg/debuggyfy#readme",
+  "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.7.2",
+    "chai": "^3.4.1",
+    "graphlib": "^1.0.7",
+    "mocha": "^2.3.3",
+    "standard": "^5.3.1"
+  }
+}

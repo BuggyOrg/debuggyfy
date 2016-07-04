@@ -4,12 +4,13 @@ import hash from 'object-hash'
 
 var api = {
 
-  // adds listener nodes between nodes connected with the given edge.
-  // if edge is null, everything is listened to
-  listento: (graph, edge) => {
+  // adds a listener between given nodes AFTER and BEFORE
+  // but only if there is a direct edge between those two
+  // if after and before are null, everything is listened to
+  listento: (graph, before, after) => {
     for (let e of graph.edges()) {
-      if (edge) {
-        if (e.v !== edge.v || e.w !== edge.w) continue
+      if (after && before) {
+        if (e.v !== before || e.w !== after) continue
       }
       let listener = 'listener_' + hash(graph.node(e.v))
       let listenerLbl = {
@@ -18,7 +19,8 @@ var api = {
         nodeType: process,
         atomic: true,
         inputPorts: { },
-        outputPorts: { }
+        outputPorts: { },
+        debugInfo: { }
       }
       graph.setNode(listener, listenerLbl)
       graph.removeEdge(e.v, e.w)

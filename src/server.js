@@ -26,7 +26,7 @@ io.on('connection', function (socket) {
 app.post('/', function (req, res) {
   res.send('Got a POST request')
 
-  for (let listener of debuglisteners) {
+  for (var listener of debuglisteners) {
     if (listener.node === req.body.node && listener.port === req.body.port) {
       listener.socket.emit('debug-info', { node: req.body.node, port: req.body.port, value: req.body.value })
     }

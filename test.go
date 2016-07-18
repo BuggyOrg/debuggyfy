@@ -3,12 +3,16 @@ package main
 import (
 	"bytes"
 	"net/http"
+	"strconv"
 )
 
 func main() {
 	url := "http://localhost:3000"
+	node := "node"
+	port := "port"
+	value := 5
 
-	var jsonStr = []byte(`{ "node":"node", "port":"port", "value":"value" }`)
+	var jsonStr = []byte(`{ "node": "` + node + `", "port": "` + port + `", "value": "` + strconv.Itoa(value) +`" }`)
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
 	req.Header.Set("Content-Type", "application/json")
 
